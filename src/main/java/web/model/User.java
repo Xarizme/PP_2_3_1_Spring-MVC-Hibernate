@@ -21,6 +21,8 @@ public class User {
     public User() {
     }
 
+
+
     public User(String name, int age, String email) {
         this.name = name;
         this.age = age;
@@ -57,5 +59,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

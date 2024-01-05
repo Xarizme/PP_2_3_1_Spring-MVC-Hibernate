@@ -1,14 +1,24 @@
 package web.Service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import web.DAO.UserDAO;
 import web.DAO.UserDAOHibernateImpl;
 import web.model.User;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
-    private UserDAO userDAO = new UserDAOHibernateImpl();
+    private final UserDAO userDAO;
+
+    @Autowired
+    public UserServiceImpl(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
     @Override
     public void saveUser(String name, int age, String email) {
@@ -21,12 +31,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void removeById(long id) {
+    public void removeById(Long id) {
         userDAO.removeById(id);
     }
 
     @Override
     public void updateUser(String name, int age, String email) {
         userDAO.updateUser(name, age, email);
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        return userDAO.getUserById(id);
     }
 }

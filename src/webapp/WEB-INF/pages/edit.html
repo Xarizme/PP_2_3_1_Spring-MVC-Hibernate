@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<h1>Edit User</h1>
+<form action="/users/update" method="POST" th:object="${user}">
+    <input type="hidden" name="id" value="${user.id}">
+    <label th:text="name">Name:</label>
+    <input type="text" name="name" th:value="${user.getName()}">
+    <br>
+    <label th:text="age">Age:</label>
+    <input type="text" name="age" th:value="${user.getAge()}">
+    <br>
+    <label th:text="email">Email:</label>
+    <input type="email" name="email" th:value="${user.getEmail()}">
+    <br>
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>

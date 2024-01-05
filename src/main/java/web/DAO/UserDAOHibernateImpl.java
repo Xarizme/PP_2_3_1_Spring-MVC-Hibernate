@@ -44,7 +44,15 @@ public class UserDAOHibernateImpl implements UserDAO {
     }
 
     @Override
-    public void updateUser(String name, int age, String email) {
+    public void updateUser(Long id, String name, int age, String email) {
+        entityManager.getTransaction().begin();
+        User user = getUserById(id);
+        user.setName(name);
+        user.setAge(age);
+        user.setEmail(email);
 
+        entityManager.merge(user);
+
+        entityManager.getTransaction().commit();
     }
 }

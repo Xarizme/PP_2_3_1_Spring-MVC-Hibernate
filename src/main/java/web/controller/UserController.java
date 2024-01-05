@@ -37,6 +37,7 @@ public class UserController {
         userService.removeById(id);
         return "redirect:/users";
     }
+
     @RequestMapping(method = RequestMethod.GET, value = "/users/add")
     public String showAddUserPage() {
         return "add";
@@ -47,6 +48,16 @@ public class UserController {
                           @RequestParam("age") int age,
                           @RequestParam("email") String email) {
         userService.saveUser(name, age, email);
+
+        return "redirect:/users";
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/users/edit")
+    public String updateUser(@RequestParam("id") Long id,
+                             @RequestParam("name") String name,
+                             @RequestParam("age") int age,
+                             @RequestParam("email") String email) {
+        userService.updateUser(id, name,age,email);
 
         return "redirect:/users";
     }

@@ -53,8 +53,8 @@
         <td th:text="${user.getName()}"></td>
         <td th:text="${user.getAge()}"></td>
         <td th:text="${user.getEmail()}"></td>
-        <td style="display: inline-block"><a th:href="@{/users/edit(id= ${user.getId()})}">edit</a></td>
-        <td>
+        <td style="display: inline-block"><a th:href="@{/users/edit(id= ${user.getId()})}">EDIT</a></td>
+        <td style="display: inline-block">
             <form method="post" th:action="@{/users(id = ${user.id})}">
                 <button type="submit" name="submit" value="value" class="link-button">DELETE</button>
             </form>
